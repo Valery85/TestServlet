@@ -7,6 +7,10 @@
     <servlet>
         <servlet-name>ServletParamWork</servlet-name>
         <servlet-class>servlets.ServletParamWork</servlet-class>
+        <init-param>
+            <param-name>initparam</param-name>
+            <param-value>value_for_init_param</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShowPage</servlet-name>

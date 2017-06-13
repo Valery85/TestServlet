@@ -5,14 +5,32 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.jstl.core.Config;
 
 
 public class ServletParamWork extends HttpServlet {
 
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config); //To change body of generated methods, choose Tools | Templates.
+        Enumeration en = config.getInitParameterNames();
+        while (en.hasMoreElements()) {
+            String nextElement = en.nextElement().toString();
+            System.out.println("Param name =" + nextElement);  
+            System.out.println (" Param value = " + config.getInitParameter(nextElement));
+                   
+            
+        }
+        System.out.println(config.getInitParameter("initparam"));
+
+    }
+     
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
