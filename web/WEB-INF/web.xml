@@ -4,9 +4,17 @@
         <servlet-name>ShowPage</servlet-name>
         <servlet-class>servlets.ShowPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletParamWork</servlet-name>
+        <servlet-class>servlets.ServletParamWork</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShowPage</servlet-name>
         <url-pattern>/ShowPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletParamWork</servlet-name>
+        <url-pattern>/ServletParamWork</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

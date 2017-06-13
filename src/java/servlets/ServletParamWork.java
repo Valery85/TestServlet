@@ -1,47 +1,52 @@
-
+ //trasfer parameters from brawser to code
 
 package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class ShowPage extends HttpServlet {
+public class ServletParamWork extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           
+ 
+            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Picture of Servlet</title>");            
+            out.println("<title>Servlet ServletParamWork</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ShowPage at " + request.getContextPath() + "</h1>");
-
-            out.println ("<img src = \"images/servletimage.jpg\" " 
-                          + "width=\"200\" height=\"207\">"  );
-            // Mogno i tak:
-            //out.println("<img src='images/servletimage.jpg'/>");
+            
+  // get all used parameters names
+       // output on console
+       Enumeration e = request.getParameterNames();
+       
+       while (e.hasMoreElements()){
+           System.out.println(e.nextElement());
+       }
+       // output on page
+       Enumeration e2 = request.getParameterNames();
+       while (e2.hasMoreElements()){
+           String param = e2.nextElement().toString();
+           out.println("<h1>  " + param + " = " + request.getParameter(param) + " </h1>" );
+       }
+       
+       
+  // use name parameter p1  
+            out.println("<h1> Parameter1 = " + request.getParameter("p1")+ "</h1>");
+         
             out.println("</body>");
             out.println("</html>");
-
-
         }
     }
 
