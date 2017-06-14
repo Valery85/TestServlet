@@ -48,7 +48,7 @@ public class ServletParamWork extends HttpServlet {
         
           try (PrintWriter out = response.getWriter()) {
  
-            
+              
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -75,7 +75,7 @@ public class ServletParamWork extends HttpServlet {
             out.println("<h1> Parameter1 = " + request.getParameter("p1")+ "</h1>");
   
 // output the count (session attribute)
-            out.println("<h1> count = " + count +  "</h1>");
+            out.println("<h1> count = " + request.getSession().getAttribute("count") +  "</h1>");
          
             out.println("</body>");
             out.println("</html>");
