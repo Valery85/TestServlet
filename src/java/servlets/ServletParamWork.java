@@ -14,7 +14,11 @@ import javax.servlet.jsp.jstl.core.Config;
 
 
 public class ServletParamWork extends HttpServlet {
-
+    
+ //field for test Session attribute
+    public int count;
+    
+    //to get init params wich was assigned in web.xml
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config); //To change body of generated methods, choose Tools | Templates.
@@ -35,7 +39,14 @@ public class ServletParamWork extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        
+  //increment count every time when user come to page      
+          count++;
+          
+  // write field count as attribute in Session
+          request.getSession().setAttribute("count", count);
+        
+          try (PrintWriter out = response.getWriter()) {
  
             
             out.println("<!DOCTYPE html>");
@@ -62,6 +73,9 @@ public class ServletParamWork extends HttpServlet {
        
   // use name parameter p1  
             out.println("<h1> Parameter1 = " + request.getParameter("p1")+ "</h1>");
+  
+// output the count (session attribute)
+            out.println("<h1> count = " + count +  "</h1>");
          
             out.println("</body>");
             out.println("</html>");
